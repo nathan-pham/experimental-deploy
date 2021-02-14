@@ -1,6 +1,6 @@
 {
-  "name": "NathanPham",
-  "short_name": "NathanPham",
+  "name": "experimental-deploy",
+  "short_name": "experimental-deploy",
   "theme_color": "#F5CB5C",
   "background_color": "#242423",
   "display": "standalone",

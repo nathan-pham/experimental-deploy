@@ -1,4 +1,4 @@
-import Root from "../../components/root"
+import Root from "../../components/document/root"
 
 const Editor = (props) => {
     return (
