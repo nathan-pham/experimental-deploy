@@ -1,5 +1,5 @@
 .editor-header {
-    background-color: #fff;
+    background-color: var(--editor-header);
     height: 4rem;
     padding: 0 0.5rem;
 }
@@ -30,6 +30,7 @@
 .editor-header .meta-container h1 i {
     font-size: 0.9rem;
     margin: 0 0 0 0.75rem;
+    color: var(--secondary);
     transition: filter 0.2s ease,
                 transform 0.2s ease;
 }
@@ -42,41 +43,48 @@
 
 .editor-header .meta-container p {
     font-size: 0.8rem;
-    color: #4c4c4c;
+    color: #fff;
     outline: none;
     margin: 0;
 }
 
 .editor-header .option {
     font-size: 1.25rem;
-    color: #838283;
+    color: var(--secondary);
     cursor: pointer;
-    transition: color 0.2s ease;
+    height: 2.5rem;
+    width: 2.5rem;
+    border: none;
+    outline: none;
+    border-radius: 0.25rem;
+    background: transparent;
+    transition: color 0.2s ease,
+                background-color 0.2s ease;
 }
 
 .editor-header .option:hover {
-    color: #fff;
+    color: var(--primary);
+    background-color: var(--primary-fade);
 }
 
 .editor {
     padding: 0.5rem;
     min-height: calc(100vh - 4rem);
-    background-color: #ededed;
+    background-color: var(--editor-gutter);
 }
 
 .editor .gutter {
-    background-color: #ededed;
+    background-color: var(--editor-gutter);
 }
 
 .editor .container {
     background-color: #fff;
-    box-shadow: 0 0 0.5rem #e6e6e6;
     border-radius: 0.25rem;
     overflow: hidden;
 }
 
 .editor .container.code {
-    background-color: #fff;
+    background-color: var(--editor-code);
     user-select: none;
 }
 
@@ -84,7 +92,7 @@
     padding: 0.25rem 0.5rem;
     font-size: 1.1rem;
     font-weight: 500;
-    background-color: #3485e4;
+    background-color: var(--editor-header);
     color: #fff;
 }
 
@@ -113,3 +121,49 @@
         opacity: 1;
     }
 }
+
+.modal-wrapper {
+    position: fixed;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-wrapper .modal {
+    background-color: var(--background-fade);
+    border-radius: 0.25rem;
+    padding: 2rem 2.5rem;;
+    font-size: 1.25rem;
+    position: relative;
+    width: 30rem;
+    color: #fff;
+    border: 0.1rem solid var(--secondary);
+}
+
+.modal h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--primary);
+    margin: 0 0 1rem 0;
+}
+
+.modal .close {
+    color: var(--secondary);
+    cursor: pointer;
+    position: absolute;
+    top: 1rem; right: 1rem;
+    transition: color 0.2s ease;
+}
+
+.modal .close:hover {
+    color: #fff;
+}
+
+/* <div className="modal-wrapper" style={{ display: visibility ? "block" : none }} onClick={toggle}>
+            <div className="modal">
+                { children }
+            </div>
+        </div> */

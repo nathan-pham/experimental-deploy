@@ -5,26 +5,26 @@
 }
 
 .error h1 {
-    font-size: 3rem;
+    font-size: 4rem;
     margin: 0 0 1rem 0;
-    color: #252526;
+    color: var(--primary);
 }
 
 .error p {
     margin: 0 0 1rem 0;
     font-size: 1.25rem;
-    color: #333;
+    color: #fff;
 }
 
 .error > div {
     font-size: 1.25rem;
-    color: #333;
+    color: #fff;
 }
 
 .error > div a {
     margin: 0 1rem 0 0;
-    background-color: #e5effb;
-    color: #3485e4;
+    background-color: var(--primary-fade);
+    color: var(--primary);
     height: 2.5rem;
     width: 2.5rem;
     border-radius: 50%;
@@ -32,5 +32,5 @@
 }
 
 .error > div a:hover {
-    background-color: #efefef;
+    background-color: var(--secondary-fade);
 }

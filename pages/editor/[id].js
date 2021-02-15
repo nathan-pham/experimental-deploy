@@ -108,23 +108,6 @@ const ProjectEditor = ({ id }) => {
     )
 }
 
-/*
-<MonacoEditor
-      
-      width="800"
-      height="600"
-      language="markdown"
-      theme="vs-dark"
-      value={postBody}
-      options={{
-        minimap: {
-          enabled: false
-        }
-      }}
-      onChange={setPostBody}
-    />
-*/
-
 const getServerSideProps = async ({ params }) => {
     const { id } = params
 
