@@ -1,0 +1,115 @@
+.editor-header {
+    background-color: #fff;
+    height: 4rem;
+    padding: 0 0.5rem;
+}
+
+.editor-header .header-icon {
+    height: 2.8rem;
+    width: 2.8rem;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.editor-header .meta-container {
+    padding: 0 0 0 0.5rem;
+    text-align: left;
+}
+
+.editor-header .meta-container h1 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #3485e4;
+    margin: 0;
+}
+
+.editor-header .meta-container h1 span {
+    outline: none;
+}
+
+.editor-header .meta-container h1 i {
+    font-size: 0.9rem;
+    margin: 0 0 0 0.75rem;
+    transition: filter 0.2s ease,
+                transform 0.2s ease;
+}
+
+.editor-header .meta-container h1 i:hover {
+    filter: brightness(0.9);
+    transform: rotate(10deg);
+    
+}
+
+.editor-header .meta-container p {
+    font-size: 0.8rem;
+    color: #4c4c4c;
+    outline: none;
+    margin: 0;
+}
+
+.editor-header .option {
+    font-size: 1.25rem;
+    color: #838283;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.editor-header .option:hover {
+    color: #fff;
+}
+
+.editor {
+    padding: 0.5rem;
+    min-height: calc(100vh - 4rem);
+    background-color: #ededed;
+}
+
+.editor .gutter {
+    background-color: #ededed;
+}
+
+.editor .container {
+    background-color: #fff;
+    box-shadow: 0 0 0.5rem #e6e6e6;
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+.editor .container.code {
+    background-color: #fff;
+    user-select: none;
+}
+
+.code header {
+    padding: 0.25rem 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    background-color: #3485e4;
+    color: #fff;
+}
+
+.editor .iframe-wrapper {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.iframe-wrapper iframe {
+    border: none;
+    outline: none;
+    height: 100%;
+    width: 100%;
+}
+
+.fade-in {
+    animation: fade-in 0.3s linear forwards;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

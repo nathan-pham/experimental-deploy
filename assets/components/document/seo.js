@@ -1,24 +1,31 @@
 import Head from "next/head"
 
-const Seo = () => {
+const fallback = {
+    title: "Experimental Deploy",
+    description: "Deploy experiments to nathanpham.me"
+}
+
+const Seo = ({ meta={} }) => {
+    meta = Object.assign({}, fallback, meta)
+
     return (
         <Head>
             <meta charSet="utf-8" />
             
-            <title>experimental-deploy</title>
+            <title>{ meta.title }</title>
 
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
             <meta name="HandheldFriendly" content="true" />
 
             <meta name="author" content="Nathan Pham" />
-            <meta name="description" content="Deploy experiments to nathanpham.me" />
+            <meta name="description" content={ meta.description } />
             <meta name="keywords" content="Nathan, Pham, experiments, deploy, build" />
 
             <meta property="og:author" content="Nathan Pham" />
-            <meta property="og:description" content="Deploy experiments to nathanpham.me" />
+            <meta property="og:description" content={ meta.description } />
             <meta property="og:image" content="/icons/apple-icon.png" />
-            <meta property="og:title" content={ title } />
+            <meta property="og:title" content={ meta.title } />
 
             <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 

@@ -1,10 +1,12 @@
 import Seo from "./seo"
 
-const Root = ({ children }) => {
+const Root = ({ meta, children }) => {
     return (
         <>
-            <Seo />
+            <Seo meta={meta}/>
             { children }
         </>
     )
 }
+
+export default Root

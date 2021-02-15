@@ -1,0 +1,36 @@
+.error {
+    overflow: hidden;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.error h1 {
+    font-size: 3rem;
+    margin: 0 0 1rem 0;
+    color: #252526;
+}
+
+.error p {
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+    color: #333;
+}
+
+.error > div {
+    font-size: 1.25rem;
+    color: #333;
+}
+
+.error > div a {
+    margin: 0 1rem 0 0;
+    background-color: #e5effb;
+    color: #3485e4;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+}
+
+.error > div a:hover {
+    background-color: #efefef;
+}

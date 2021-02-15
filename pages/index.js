@@ -1,5 +1,10 @@
+import { setCookie } from "nookies"
+import Root from "../assets/components/document/root"
+
 export default function Home() {
   return (
-    <p>hello there</p>
+    <Root>
+      
+    </Root>
   )
 }
