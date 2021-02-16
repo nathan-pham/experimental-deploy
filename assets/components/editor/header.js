@@ -1,42 +1,17 @@
+import { useState } from "react"
 import Link from "next/link"
-import { useState, useEffect } from "react"
-import query from "../../database/query"
 import Modal from "../modal"
-
-const timerHook = (initial, id, alter) => {
-    const [save, setSave] = useState(false)
-
-    useEffect(() => {
-        let timeout
-    
-        if(save) {
-            timeout = setTimeout(async () => {
-                query("project", {
-                    name: id,
-                    project: {
-                        [`meta.${alter}`]: save.target.textContent
-                    },  
-                    type: "update"
-                })
-
-                setSave(false)
-            }, 2000)
-        }
-
-        return () => clearTimeout(timeout)
-    }, [save])
-
-    return [save, setSave]
-}
+import useTimer from "./timer"
+import ToggleSwitch from "../toggle"
+import { useSettings } from "../settings"
 
 const Header = ({ id, name, description }) => {
-    const [_name, setName] = timerHook(name, id, "name")
-    const [_description, setDescription] = timerHook(description, id, "description")
+    const [_name, setName] = useTimer(id, "name")
+    const [_description, setDescription] = useTimer(id, "description")
     const [visible, setVisible] = useState(false)
+    const [settings, setSettings] = useSettings()
 
-    const toggle = () => {
-        setVisible(state => !state)
-    }
+    const toggle = () => setVisible(state => !state) 
 
     return (
         <>
@@ -62,7 +37,13 @@ const Header = ({ id, name, description }) => {
             { visible ? (
                 <Modal onClick={toggle}>
                     <h1>Settings</h1>
-                    
+                    <input />
+                    <div className="dependencies"></div>
+                    <div className="flex justify-between align-center">
+                        <span className="label">Anyone can see this experiment</span>
+                        <ToggleSwitch />
+                    </div>
+                    <button className="delete">Delete project</button>
                 </Modal>
             ) : null }
         </>

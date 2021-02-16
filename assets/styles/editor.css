@@ -133,12 +133,12 @@
 }
 
 .modal-wrapper .modal {
-    background-color: var(--background-fade);
+    background-color: var(--background);
     border-radius: 0.25rem;
     padding: 2rem 2.5rem;;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     position: relative;
-    width: 30rem;
+    width: 35rem;
     color: #fff;
     border: 0.1rem solid var(--secondary);
 }
@@ -155,15 +155,77 @@
     cursor: pointer;
     position: absolute;
     top: 1rem; right: 1rem;
+    font-size: 1.25rem;
     transition: color 0.2s ease;
 }
 
 .modal .close:hover {
+    color: #e1e2e4;
+}
+
+.modal button.delete {
+    border: 0.1rem solid var(--background-light);
+    border-radius: 0.5rem;
+    background-color: var(--background-fade);
+    color: var(--accent);
+    font-size: 1rem;
+    padding: 0.5rem;
+    margin: 1rem 0 0 0;
+    transition: background-color 0.2s ease,
+                border-color 0.2s ease,
+                color 0.2s ease;
+}
+
+.modal button.delete:hover {
+    background-color: var(--accent);
+    border-color: var(--accent);
     color: #fff;
 }
 
-/* <div className="modal-wrapper" style={{ display: visibility ? "block" : none }} onClick={toggle}>
-            <div className="modal">
-                { children }
-            </div>
-        </div> */
+.modal .label {
+    color: #e1e2e4;
+}
+
+.toggle-switch {
+    --size: 1.5rem;
+    border-radius: 10rem;
+    background: var(--background-light);
+    height: var(--size);
+    width: 2.75rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.toggle-switch input {
+    position: absolute;
+    left: -0.5rem; top: -0.5rem;
+    opacity: 0;
+    cursor: pointer;
+    height: 4rem;
+    width: 4rem;
+}
+
+.toggle-switch .toggle-ball {
+    position: absolute;
+    left: 0;
+    height: var(--size);
+    width: var(--size);
+    background-color: #fff;
+    border-radius: 100%;
+    pointer-events: none;
+    transition: left 0.2s ease,
+                background-color 0.2s ease;
+}
+
+.toggle-switch.checked .toggle-ball {
+    left: calc(100% - var(--size));
+    background-color: var(--primary);
+}
+/* 
+
+<div className="toggle-switch">
+            <input type="checkbox" class="switch-checkbox" name="toggle-switch" checked={check} />
+            <label class="toggle-switch-label" for="toggle-switch">
+                {label}
+            </label>
+        </div>*/

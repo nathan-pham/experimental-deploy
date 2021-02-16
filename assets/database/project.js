@@ -7,6 +7,10 @@ const generateDefault = (name) => {
             name,
             description: "no description"
         },
+        settings: {
+            dependencies: [],
+            private: false
+        },
         html: "Hello World!",
         css: "/* CSS */",
         js: "// JS"
@@ -25,8 +29,8 @@ const fetchProject = async (id) => {
         : { error: "project does not exist" }
 }
 
-const createProject = async (name="untitled-project") => {
-    const _default = generateDefault(name)
+const createProject = async (name="untitled-project", project={}) => {
+    const _default = Object.assign({}, generateDefault(name), project)
     const res = await collections.projects.add(_default)
 
     return ({

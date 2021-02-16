@@ -9,7 +9,7 @@ const handle = async (req, res) => {
 
   switch(type) {
     case "create":
-      res.json(await createProject(name))
+      res.json(await createProject(name, project))
       break
     case "fetch":
       res.json(await fetchProject(name))

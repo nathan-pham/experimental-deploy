@@ -1,12 +1,11 @@
-import Link from "next/link"
 import Split from "react-split"
 import { useState, useEffect } from "react"
-import Root from "../../assets/components/document/root"
+import { SettingsProvider } from "../../assets/components/settings"
 import Editor from "../../assets/components/editor/monaco"
 import Header from "../../assets/components/editor/header"
+import Root from "../../assets/components/document/root"
 import Error from "../../assets/components/error"
 import query from "../../assets/database/query"
-
 const half = 50
 const third = 100 / 3
 
@@ -23,10 +22,10 @@ const generateCode = (project) => {
         <!DOCTYPE html>
         <head lang="en">
             <style>${project.css}</style>
+            <script type="module">${project.js}</script>
         </head>
         <body>
             ${project.html}
-            <script>${project.js}</script>
         </body>
     `)
 }
@@ -80,7 +79,7 @@ const ProjectEditor = ({ id }) => {
                     : project.error
                         ? <Error />
                         : (
-                            <>
+                            <SettingsProvider settings={project.settings}>
                                 <Header id={id} name={project.meta.name} description={project.meta.description} />
                                 <Split sizes={[half, half]} direction="vertical" className="editor fade-in flex direction-column" gutterSize={8} elementStyle={flexBasis}>
                                     <Split sizes={[ third, third, third ]} direction="horizontal" className="flex direction-row half" gutterSize={8}>
@@ -101,7 +100,7 @@ const ProjectEditor = ({ id }) => {
                                         <iframe srcDoc={ generateCode(project) }></iframe>
                                     </div>
                                 </Split>
-                            </>
+                            </SettingsProvider>
                         )
             }
         </Root>

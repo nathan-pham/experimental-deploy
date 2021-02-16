@@ -1,4 +1,5 @@
 :root {
+  --accent: #f0491d;
   --editor-gutter: #0e1525;
   --editor-header: #1d2333;
   --editor-code: #1d2333;
@@ -28,4 +29,14 @@ html, body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+button, input {
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  user-select: none;
 }
