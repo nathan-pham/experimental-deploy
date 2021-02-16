@@ -1,10 +1,12 @@
-import { useState } from "react"
 import Link from "next/link"
+import { useState } from "react"
+import arrayMove from "array-move"
 import Modal from "../modal"
 import useTimer from "./timer"
 import ToggleSwitch from "../toggle"
 import query from "../../database/query"
 import { useSettings } from "../settings"
+import { SortableItem, SortableContainer } from "../dependency"
 
 const Header = ({ id, name, description }) => {
     const [_name, setName] = useTimer(id, "name")
@@ -27,25 +29,35 @@ const Header = ({ id, name, description }) => {
     const addDependency = (e) => {
         if(e.key.toLowerCase() == "enter") {
             const dependency = e.target.value
-            e.target.value = ""
 
-            setSettings(state => ({
-                ...state,
-                dependencies: [
-                    ...state.dependencies,
-                    dependency
-                ]
-            }))
-
-            // update("dependencies", )
+            if(!settings.dependencies.includes(dependency) && /^http[\S]+\.[|js|css]/.test(dependency)) {
+                e.target.value = ""
+                const dependencies = [dependency, ...settings.dependencies]
+                setSettings(state => ({
+                    ...state,
+                    dependencies
+                }))
+                update("dependencies", dependencies)
+            }
         }
     }
 
     const removeDependency = (index) => {
+        const dependencies = settings.dependencies.filter(v => v !== settings.dependencies[index])
         setSettings(state => ({
             ...state,
-            dependencies: state.dependencies.filter(v => v !== state.dependencies[index])
+            dependencies
         }))
+        update("dependencies", dependencies)
+    }
+
+    const onSortEnd = ({ oldIndex, newIndex }) => {
+        const dependencies = arrayMove(settings.dependencies, oldIndex, newIndex)
+        setSettings(state => ({
+            ...state,
+            dependencies
+        }))
+        update("dependencies", dependencies)
     }
 
     return (
@@ -79,13 +91,26 @@ const Header = ({ id, name, description }) => {
                         <button className="secondary-button"><i className="fas fa-code-branch"></i>Fork</button>
                     </div>
                     <input placeholder="Enter a dependency" type="text" style={{margin: "0 0 1rem 0"}} onKeyDown={addDependency}></input>
-                    <div className="dependencies">
+                    <SortableContainer onSortEnd={onSortEnd} useDragHandle>
+                        {
+                            settings.dependencies.filter(v => v.length).map((v, i) => (
+                                <SortableItem key={`dependency-${i}`} index={i} className="flex align-center dependency" style={{ zIndex: 20 }}>
+                                    <span>{v}</span>
+                                    <i key={i} className="fas fa-minus-circle remove" onClick={(e) => {
+                                        e.stopPropagation()
+                                        removeDependency(i)
+                                    }}></i>
+                                </SortableItem>
+                            ))
+                        }
+                    </SortableContainer>
+                    {/* <div className="dependencies">
                         { 
                             settings.dependencies.reverse().filter(v => v.length).map((v, i) => (
-                                <div className="flex align-center"><i key={i} className="fas fa-minus-circle" onClick={() => removeDependency(i)}></i> {v}</div>
+                                <div className="flex align-center dependency"><i key={i} className="fas fa-minus-circle" onClick={() => removeDependency(i)}></i> {v}</div>
                             )) 
                         }
-                    </div>
+                    </div> */}
                     <div className="flex justify-between align-center">
                         <span className="label">{ settings.private ? "Only you can see this experiment" : "Anyone can see this experiment" }</span>
                         <ToggleSwitch onChange={(e) => {

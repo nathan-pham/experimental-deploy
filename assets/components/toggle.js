@@ -6,11 +6,11 @@ const ToggleSwitch = ({ initial=false, label, ...props }) => {
 
     return (
         <div className={["toggle-switch", check ? "checked" : "unchecked"].join(' ')}>
-            <input type="checkbox" class="switch-checkbox" name="toggle-switch" checked={check} onClick={toggle} {...props} />
+            <input type="checkbox" className="switch-checkbox" name="toggle-switch" checked={check} onClick={toggle} {...props} />
             <div className="toggle-ball"></div>
             {
                 label
-                    ? <label class="toggle-switch-label" for="toggle-switch">{label}</label>
+                    ? <label className="toggle-switch-label" for="toggle-switch">{label}</label>
                     : null
             }
         </div>

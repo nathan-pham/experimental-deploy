@@ -9,7 +9,7 @@ Deploy experiments to nathanpham.me
     - [x] settings  
         - [x] private  
         - [x] preview  
-        - [ ] dependencies  
+        - [x] dependencies  
 - [x] 404 page
 - [ ] home page (with all experiments)  
 - [ ] dashboard  

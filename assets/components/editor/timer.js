@@ -6,7 +6,7 @@ const useTimer = (id, alter) => {
 
     useEffect(() => {
         let timeout
-    
+
         if(save) {
             timeout = setTimeout(async () => {
                 query("project", {

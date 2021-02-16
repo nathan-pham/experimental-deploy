@@ -180,21 +180,38 @@
 
 .modal .dependencies {
     margin: 0 0 1rem 0;
+    padding: 0;
     height: 5rem;
+    list-style: none;
+    list-style-type: none;
     overflow-y: scroll;
 }
 
-.dependencies > div {
+.dependency {
+    font-size: 1.1rem;
     margin: 0 0 0.5rem 0;
+    color: #fff;
 }
 
-.dependencies > div i {
+.dependency > span {
+    max-width: calc(100% - 5rem);
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+.dependency i {
     cursor: pointer;
     margin: 0 0.75rem 0 0;
     transition: color 0.2s ease;
 }
 
-.dependencies > div i:hover {
+.dependency .remove {
+    justify-self: flex-end;
+    margin-left: auto;
+}
+
+.dependency .remove:hover {
     color: var(--accent);
 }
 

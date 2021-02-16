@@ -5,8 +5,8 @@ import { collections } from "../../assets/database/client"
 import Editor from "../../assets/components/editor/monaco"
 import Header from "../../assets/components/editor/header"
 import Root from "../../assets/components/document/root"
+import Preview from "../../assets/components/preview"
 import Error from "../../assets/components/error"
-import { generateCode } from "../../assets/utils"
 import query from "../../assets/database/query"
 const half = 50
 const third = 100 / 3
@@ -74,7 +74,7 @@ const ProjectEditor = ({ id, fetchedProject }) => {
                                     </div>
                                 </Split>
                                 <div className="container iframe-wrapper">
-                                    <iframe srcDoc={ generateCode(project) }></iframe>
+                                    <Preview project={project} />
                                 </div>
                             </Split>
                         </SettingsProvider>
