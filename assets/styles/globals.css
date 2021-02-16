@@ -40,3 +40,50 @@ button {
   cursor: pointer;
   user-select: none;
 }
+
+button.danger-button {
+  color: var(--accent);
+}
+
+button.danger-button:hover {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+button.primary-button {
+  color: var(--primary);
+}
+
+button.primary-button:hover {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+button.secondary-button {
+  color: #e1e2e4;
+}
+
+button.secondary-button:hover {
+  background-color: var(--background-light);
+}
+
+::-webkit-scrollbar {
+  width: 0.625rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-fade);
+  border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 0.5rem;
+}
+
+/* Handle on hover
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} */

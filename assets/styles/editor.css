@@ -135,7 +135,7 @@
 .modal-wrapper .modal {
     background-color: var(--background);
     border-radius: 0.25rem;
-    padding: 2rem 2.5rem;;
+    padding: 2.5rem;;
     font-size: 1.1rem;
     position: relative;
     width: 35rem;
@@ -147,7 +147,7 @@
     font-size: 1.5rem;
     font-weight: 500;
     color: var(--primary);
-    margin: 0 0 1rem 0;
+    margin: 0 0 1.5rem 0;
 }
 
 .modal .close {
@@ -155,7 +155,7 @@
     cursor: pointer;
     position: absolute;
     top: 1rem; right: 1rem;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     transition: color 0.2s ease;
 }
 
@@ -163,23 +163,60 @@
     color: #e1e2e4;
 }
 
-.modal button.delete {
+.modal button {
     border: 0.1rem solid var(--background-light);
-    border-radius: 0.5rem;
     background-color: var(--background-fade);
-    color: var(--accent);
+    border-radius: 0.5rem;
     font-size: 1rem;
     padding: 0.5rem;
-    margin: 1rem 0 0 0;
+    display: flex;
+    align-items: center;
     transition: background-color 0.2s ease,
                 border-color 0.2s ease,
                 color 0.2s ease;
 }
 
-.modal button.delete:hover {
-    background-color: var(--accent);
-    border-color: var(--accent);
+.modal button i {
+    font-size: 0.7rem;
+    margin: 0 0.5rem 0 0;
+}
+
+.modal .dependencies {
+    margin: 0 0 1rem 0;
+    height: 5rem;
+    overflow-y: scroll;
+}
+
+.dependencies > div {
+    margin: 0 0 0.5rem 0;
+}
+
+.dependencies > div i {
+    cursor: pointer;
+    margin: 0 0.75rem 0 0;
+    transition: color 0.2s ease;
+}
+
+.dependencies > div i:hover {
+    color: var(--accent);
+}
+
+.modal input {
+    border: 0.1rem solid var(--background-light);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    width: 100%;
+    font-size: 1rem;
     color: #fff;
+    background-color: transparent;
+}
+
+.modal input::placeholder {
+    color: var(--secondary);
+}
+
+.modal input:hover {
+    border-color: var(--primary);
 }
 
 .modal .label {
