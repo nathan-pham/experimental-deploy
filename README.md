@@ -2,15 +2,15 @@
 Deploy experiments to nathanpham.me
 
 ## TODO
-- [ ] icons & seo  
-- [ ] main editor  
-    - [ ] monaco + themes  
-    - [ ] saving  
-    - [ ] settings  
-        - [ ] private  
-        - [ ] preview  
+- [x] icons & seo  
+- [x] main editor  
+    - [x] monaco + themes  
+    - [x] saving  
+    - [x] settings  
+        - [x] private  
+        - [x] preview  
         - [ ] dependencies  
-- [ ] 404 page
+- [x] 404 page
 - [ ] home page (with all experiments)  
 - [ ] dashboard  
     - [ ] display experiments  
