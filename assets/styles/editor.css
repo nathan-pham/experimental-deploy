@@ -96,17 +96,14 @@
     color: #fff;
 }
 
+.iframe-wrapper {
+    height: 100vh;
+}
+
 .editor .iframe-wrapper {
     height: 100%;
     width: 100%;
     overflow: hidden;
-}
-
-.iframe-wrapper iframe {
-    border: none;
-    outline: none;
-    height: 100%;
-    width: 100%;
 }
 
 .fade-in {

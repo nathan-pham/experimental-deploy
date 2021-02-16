@@ -1,10 +1,18 @@
 import { setCookie } from "nookies"
 import Root from "../assets/components/document/root"
 
-export default function Home() {
+const Index = () => {
   return (
-    <Root>
-      
-    </Root>
+    <Root></Root>
   )
 }
+
+const getServerSideProps = async () => {
+  return ({
+    props: {}
+  })
+}
+
+
+export default Index
+export { getServerSideProps }

@@ -1,7 +1,7 @@
 import Head from "next/head"
 
 const fallback = {
-    title: "Experimental Deploy",
+    name: "Deploy",
     description: "Deploy experiments to nathanpham.me"
 }
 
@@ -12,7 +12,7 @@ const Seo = ({ meta={} }) => {
         <Head>
             <meta charSet="utf-8" />
             
-            <title>{ meta.title }</title>
+            <title>{ meta.name }</title>
 
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -25,7 +25,7 @@ const Seo = ({ meta={} }) => {
             <meta property="og:author" content="Nathan Pham" />
             <meta property="og:description" content={ meta.description } />
             <meta property="og:image" content="/icons/apple-icon.png" />
-            <meta property="og:title" content={ meta.title } />
+            <meta property="og:title" content={ meta.name } />
 
             <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 

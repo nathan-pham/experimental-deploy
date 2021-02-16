@@ -39,6 +39,7 @@ button, input {
 button {
   cursor: pointer;
   user-select: none;
+  text-decoration: none;
 }
 
 button.danger-button {
@@ -69,6 +70,13 @@ button.secondary-button:hover {
   background-color: var(--background-light);
 }
 
+iframe {
+  border: none;
+  outline: none;
+  height: 100%;
+  width: 100%;
+}
+
 ::-webkit-scrollbar {
   width: 0.625rem;
 }
@@ -82,8 +90,3 @@ button.secondary-button:hover {
   background: var(--primary);
   border-radius: 0.5rem;
 }
-
-/* Handle on hover
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-} */
