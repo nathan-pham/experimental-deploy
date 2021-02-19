@@ -1,8 +1,8 @@
 import Head from "next/head"
 
 const fallback = {
-    name: "Deploy",
-    description: "Deploy experiments to nathanpham.me"
+    name: "experiments",
+    description: "deploy experiments to nathanpham.me"
 }
 
 const Seo = ({ meta={} }) => {

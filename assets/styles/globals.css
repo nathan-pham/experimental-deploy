@@ -1,5 +1,6 @@
 :root {
   --accent: #f0491d;
+  --play-button: #21a243;
   --editor-gutter: #0e1525;
   --editor-header: #1d2333;
   --editor-code: #1d2333;
@@ -22,6 +23,10 @@ html, body {
   background-color: var(--editor-gutter);
 }
 
+body {
+    min-height: 100vh;
+}
+
 *, *::before, *::after {
   box-sizing: inherit;
 }
@@ -37,9 +42,39 @@ button, input {
 }
 
 button {
-  cursor: pointer;
-  user-select: none;
-  text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+    border: 0.1rem solid var(--background-light);
+    background-color: var(--background-fade);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s ease,
+                border-color 0.2s ease,
+                color 0.2s ease;
+}
+
+
+input.default {
+    border: 0.1rem solid var(--background-light);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    width: 100%;
+    font-size: 1rem;
+    color: #fff;
+    background-color: transparent;
+    transition: border-color 0.2s ease;
+}
+
+input.default::placeholder {
+    color: var(--secondary);
+}
+
+input.default:hover {
+    border-color: var(--primary);
 }
 
 button.danger-button {
@@ -79,6 +114,7 @@ iframe {
 
 ::-webkit-scrollbar {
   width: 0.625rem;
+  background: var(--background-fade);
 }
 
 ::-webkit-scrollbar-track {

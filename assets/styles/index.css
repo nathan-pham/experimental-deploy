@@ -1,0 +1,63 @@
+.experiment-wrapper {
+    margin: 0 auto;
+    max-width: 45rem;
+    padding: 0 0.5rem;
+}
+
+.experiment {
+    border-radius: 0.25rem;
+    width: 100%;
+    padding: 1rem;
+    margin: 0 0 1rem 0;
+    position: relative;
+    user-select: none;
+    background-color: var(--background);
+    /* border: 0.2rem solid #234d74; */
+    /* border: 0.2rem solid var(--primary); */
+}
+
+.experiment h1 {
+    color: var(--primary);
+}
+
+.experiment p {
+    color: rgba(255, 255, 255, 0.64);
+}
+
+.experiment a {
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    height: 5rem;
+    width: 5rem;
+    font-size: 1.25rem;
+    color: #fff;
+    border-radius: 50%;
+    background-color: var(--play-button);
+    box-shadow: 0 0 0.75rem var(--play-button);
+    opacity: 0;
+    transform: translateY(-50%);
+    transition: opacity 0.2s ease;
+}
+
+.experiment:hover a {
+    opacity: 1;
+}
+
+.search-box {
+    color: #fff;
+    margin: 0 0 1rem 0;
+}
+
+.search-box > div {
+    width: 100%;
+}
+
+.search-box h1 {
+    margin: 2rem 0;
+}
+
+.search-box input {
+    border-radius: 0.25rem;
+    width: fit-content;
+}

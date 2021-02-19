@@ -1,9 +1,16 @@
 import { collections } from "../assets/database/client"
 import Root from "../assets/components/document/root"
 import Error from "../assets/components/error"
-import { generateCode } from "../assets/utils"
+import { generateCode, atob, btoa } from "../assets/utils"
 import * as jsdom from "jsdom"
+
 const { JSDOM } = jsdom
+
+const convert = (url, invert) => {
+    return invert
+        ? atob(url).split("0").filter(v => v.length).join('')
+        : btoa(url.padStart(15, '0'))
+}
 
 const ProjectEditor = ({ id, fetchedProject }) => {
     return (
@@ -35,7 +42,7 @@ const getServerSideProps = async ({ params }) => {
     let project = document.exists ? document.data() : { error: "project not found" }
     
     if(!document.exists) {
-        const repl = `https://${Buffer.from(id, "base64").toString("binary")}.phamn23.repl.co/`
+        const repl = `https://${convert(id, true)}.phamn23.repl.co/`
         const res = await fetch(repl).catch(e => ({ status: 404 }))
 
         if(res.status == 200) {

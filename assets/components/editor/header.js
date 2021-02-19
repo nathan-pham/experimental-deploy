@@ -90,7 +90,7 @@ const Header = ({ id, name, description }) => {
                         </a>
                         <button className="secondary-button"><i className="fas fa-code-branch"></i>Fork</button>
                     </div>
-                    <input placeholder="Enter a dependency" type="text" style={{margin: "0 0 1rem 0"}} onKeyDown={addDependency}></input>
+                    <input className="default" placeholder="Enter a dependency" type="text" style={{margin: "0 0 1rem 0"}} onKeyDown={addDependency}></input>
                     <SortableContainer onSortEnd={onSortEnd} useDragHandle>
                         {
                             settings.dependencies.filter(v => v.length).map((v, i) => (
@@ -104,13 +104,6 @@ const Header = ({ id, name, description }) => {
                             ))
                         }
                     </SortableContainer>
-                    {/* <div className="dependencies">
-                        { 
-                            settings.dependencies.reverse().filter(v => v.length).map((v, i) => (
-                                <div className="flex align-center dependency"><i key={i} className="fas fa-minus-circle" onClick={() => removeDependency(i)}></i> {v}</div>
-                            )) 
-                        }
-                    </div> */}
                     <div className="flex justify-between align-center">
                         <span className="label">{ settings.private ? "Only you can see this experiment" : "Anyone can see this experiment" }</span>
                         <ToggleSwitch onChange={(e) => {

@@ -31,6 +31,11 @@ const generateCode = (project) => {
     `)
 }
 
+const atob = a => Buffer.from(a, "base64").toString("binary")
+const btoa = b => Buffer.from(b).toString("base64")
+
 export {
-    generateCode
+    generateCode,
+    atob,
+    btoa
 }
