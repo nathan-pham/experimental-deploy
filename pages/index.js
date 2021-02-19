@@ -17,6 +17,7 @@ const includes = (input, data) => {
 
 const Index = ({ projects }) => {
     const [ input, setInput ] = useState("")
+    const filtered = projects.filter(({ data: { meta } }) => includes(input, meta.name) || includes(input, meta.description))
 
     return (
         <Root>
@@ -34,12 +35,14 @@ const Index = ({ projects }) => {
                     <input placeholder="project key words" className="default" onInput={(e) => setInput(e.target.value)} />
                 </div>
                 {
-                    projects.filter((project) => {
-                        const { data: { meta } } = project
-                        return includes(input, meta.name) || includes(input, meta.description)
-                    }).map((project, i) => (
+                    filtered.map((project, i) => (
                         <Experiment project={project} index={i} />
                     ))
+                }
+                {
+                    filtered.length == 0
+                        ? <p className="no-experiments">no experiments found</p>
+                        : <></>
                 }
             </div>
         </Root>
@@ -59,7 +62,7 @@ const getServerSideProps = async () => {
 
     return ({
         props: {
-            projects
+            projects: projects.filter(({ data }) => !data.settings.private)
         }
     })
 }

@@ -4,10 +4,28 @@
     padding: 0 0.5rem;
 }
 
+.search-box {
+    color: #fff;
+    margin: 0 0 1.5rem 0;
+}
+
+.search-box > div {
+    width: 100%;
+}
+
+.search-box h1 {
+    margin: 2rem 0;
+}
+
+.search-box input {
+    border-radius: 0.25rem;
+    width: fit-content;
+}
+
 .experiment {
     border-radius: 0.25rem;
     width: 100%;
-    padding: 1rem;
+    padding: 2rem;
     margin: 0 0 1rem 0;
     position: relative;
     user-select: none;
@@ -18,10 +36,13 @@
 
 .experiment h1 {
     color: var(--primary);
+    margin: 0 0 1rem 0;
 }
 
 .experiment p {
     color: rgba(255, 255, 255, 0.64);
+    font-size: 1.25rem;
+    margin: 0;
 }
 
 .experiment a {
@@ -44,20 +65,7 @@
     opacity: 1;
 }
 
-.search-box {
+.no-experiments {
     color: #fff;
-    margin: 0 0 1rem 0;
-}
-
-.search-box > div {
-    width: 100%;
-}
-
-.search-box h1 {
-    margin: 2rem 0;
-}
-
-.search-box input {
-    border-radius: 0.25rem;
-    width: fit-content;
+    font-size: 1.25rem;
 }
