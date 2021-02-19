@@ -34,8 +34,15 @@ const generateCode = (project) => {
 const atob = a => Buffer.from(a, "base64").toString("binary")
 const btoa = b => Buffer.from(b).toString("base64")
 
+const encodeParams = (params) => (
+  Object.keys(params)
+    .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(params[k])}`)
+    .join('&')
+)
+
 export {
     generateCode,
+    encodeParams,
     atob,
     btoa
 }

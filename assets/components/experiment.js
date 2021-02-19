@@ -1,10 +1,10 @@
 import Link from "next/link"
 
-const Experiment = ({ project, index }) => {
+const Experiment = ({ project, key }) => {
     const { id, data } = project
 
     return (
-        <article key={`experiment-${index}`} className="experiment">
+        <article key={`experiment-${key}`} className="experiment">
             <h1>{ data.meta.name }</h1>
             <p>{ data.meta.description }</p>
             <a href={`/${id}`} target="__blank" rel="noreferrer" className="flex align-center justify-center">

@@ -14,6 +14,7 @@
 }
 
 .search-box h1 {
+    font-size: 2rem;
     margin: 2rem 0;
 }
 
@@ -41,7 +42,6 @@
 
 .experiment p {
     color: rgba(255, 255, 255, 0.64);
-    font-size: 1.25rem;
     margin: 0;
 }
 
@@ -67,5 +67,4 @@
 
 .no-experiments {
     color: #fff;
-    font-size: 1.25rem;
 }

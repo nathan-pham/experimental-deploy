@@ -36,7 +36,7 @@ const Index = ({ projects }) => {
                 </div>
                 {
                     filtered.map((project, i) => (
-                        <Experiment project={project} index={i} />
+                        <Experiment project={project} key={i} />
                     ))
                 }
                 {
