@@ -60,7 +60,10 @@ const updateProject = async (id, project) => {
 }
 
 const deleteProject = async (id) => {
-    return collections.projects.doc(id).delete()
+    await collections.projects.doc(id).delete()
+    return ({
+        success: "deleted"
+    })
 }
 
 export {
