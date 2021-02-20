@@ -2,18 +2,9 @@ import { collections } from "../assets/database/client"
 import { setCookie } from "nookies"
 import { useState } from "react"
 import Link from "next/link"
+import Experiment from "../assets/components/cards/experiment"
 import Root from "../assets/components/document/root"
-import Experiment from "../assets/components/experiment"
-
-const includes = (input, data) => {
-    const words = input.split(' ')
-    for(const word of words) {
-        if(data.includes(word)) {
-            return true
-        }
-    }
-    return false
-}
+import { includes } from "../assets/utils"
 
 const Index = ({ projects }) => {
     const [ input, setInput ] = useState("")
@@ -21,13 +12,13 @@ const Index = ({ projects }) => {
 
     return (
         <Root>
-            <div className="experiment-wrapper">
+            <main className="experiment-wrapper">
                 <div className="search-box">
                     <div className="flex align-center justify-between">
                         <h1>experiments</h1>
                         <Link href="/api/auth/login">
                             <button className="primary-button">
-                                <i className="fas fa-plus"></i>
+                                login
                             </button>
                         </Link>
                     </div>
@@ -44,7 +35,7 @@ const Index = ({ projects }) => {
                         ? <p className="no-experiments">no experiments found</p>
                         : <></>
                 }
-            </div>
+            </main>
         </Root>
     )
 }

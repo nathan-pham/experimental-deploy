@@ -1,10 +1,10 @@
 import Link from "next/link"
 
-const Error = () => {
+const Error = ({ error }) => {
     return (
         <div className="flex align-center justify-center direction-column error fade-in">
             <h1>¯\_(ツ)_/¯</h1>
-            <p>project not found</p>
+            <p>{ error || "project not found" }</p>
             <div className="flex align-center">
                 <Link href="/">
                     <a className="flex align-center justify-center">

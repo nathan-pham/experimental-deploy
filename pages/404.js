@@ -3,7 +3,7 @@ import Error from "../assets/components/error"
 
 const Error404 = () => {
     return (
-        <Root meta={{ name: "Project not found" }}>
+        <Root meta={{ name: "project not found" }}>
             <Error />
         </Root>
     )

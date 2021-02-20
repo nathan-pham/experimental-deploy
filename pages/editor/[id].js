@@ -1,3 +1,4 @@
+import Cookie from "cookies"
 import Split from "react-split"
 import { useState, useEffect } from "react"
 import { SettingsProvider } from "../../assets/components/settings"
@@ -8,6 +9,7 @@ import Root from "../../assets/components/document/root"
 import Preview from "../../assets/components/preview"
 import Error from "../../assets/components/error"
 import query from "../../assets/database/query"
+import validate from "../../assets/validate"
 const half = 50
 const third = 100 / 3
 
@@ -84,8 +86,20 @@ const ProjectEditor = ({ id, fetchedProject }) => {
     )
 }
 
-const getServerSideProps = async ({ params }) => {
+const getServerSideProps = async ({ req, res, params }) => {
     const { id } = params
+    const cookies = new Cookie(req, res)
+
+    const valid = await validate(cookies.get("access_token"))
+
+    if(!valid) {
+        return ({
+            redirect: {
+                destination: '/',
+                permanent: false
+            }
+        })
+    }
 
     const document = await collections.projects.doc(id).get()
     const project = document.exists ? document.data() : { error: "project not found" }

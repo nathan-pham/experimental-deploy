@@ -9,7 +9,8 @@ const generateDefault = (name) => {
         },
         settings: {
             dependencies: [],
-            private: false
+            private: false,
+            pinned: false
         },
         html: "Hello World!",
         css: "/* CSS */",

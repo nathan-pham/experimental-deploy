@@ -22,13 +22,13 @@ const ProjectEditor = ({ id, fetchedProject }) => {
             )
             : (
                 <Root meta={fetchedProject.meta}>
-                    <div className="iframe-wrapper">
+                    <main className="iframe-wrapper">
                         {
                             fetchedProject.repl
                                 ? <iframe src={fetchedProject.repl}></iframe>
                                 : <iframe srcDoc={generateCode(fetchedProject)}></iframe>
                         }
-                    </div>
+                    </main>
                 </Root>
             )
         

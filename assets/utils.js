@@ -41,9 +41,20 @@ const encodeParams = (params) => (
     .join('&')
 )
 
+const includes = (input, data) => {
+    const words = input.split(' ')
+    for(const word of words) {
+        if(data.includes(word)) {
+            return true
+        }
+    }
+    return false
+}
+
 export {
     generateCode,
     encodeParams,
+    includes,
     atob,
     btoa
 }
