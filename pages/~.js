@@ -6,7 +6,7 @@ import Root from "../assets/components/document/root"
 import Project from "../assets/components/cards/project"
 import { collections } from "../assets/database/client"
 import query from "../assets/database/query"
-import { includes } from "../assets/utils"
+import { includes, btoa } from "../assets/utils"
 import validate from "../assets/validate"
 
 const Dashboard = ({ fetchedProjects }) => {
@@ -52,7 +52,7 @@ const Dashboard = ({ fetchedProjects }) => {
                 </div>
                 {
                     filtered.map((project, i) => (
-                        <Project project={project} key={`project-${Math.random()}`} updateSettings={updateSettings} />
+                        <Project project={project} key={btoa(String(Math.random()))} updateSettings={updateSettings} />
                     ))
                 }
                 {

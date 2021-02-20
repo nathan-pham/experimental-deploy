@@ -9,7 +9,7 @@ const handle = async (req, res) => {
 
     if(state !== req.query.state) {
         cookies.set("state")
-        res.send("forged state")
+        res.redirect('/')
         return
     }
 
