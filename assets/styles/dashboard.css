@@ -45,27 +45,3 @@
 .star-wrapper:hover i:last-child {
     opacity: 1;
 }
-
-
-
-/*
-<article className="dashboard-project flex justify-between">
-            <div className="flex">
-                <div className="star-wrapper">
-                    <i className="far fa-star"></i>
-                    <i className="fas fa-star"></i>
-                </div>
-                <ToggleSwitch />
-                <span>{ data.meta.name }</span>
-            </div>
-        </article>
-        .experiment {
-    border-radius: 0.25rem;
-    width: 100%;
-    padding: 2rem;
-    margin: 0 0 1rem 0;
-    position: relative;
-    user-select: none;
-    background-color: var(--background);
-}
-*/
