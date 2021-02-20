@@ -1,7 +1,7 @@
-# Experimental Deploy
+# experiments
 Deploy experiments to nathanpham.me
 
-## TODO
+## todo
 - [x] icons & seo  
 - [x] main editor  
     - [x] monaco + themes  
@@ -11,16 +11,16 @@ Deploy experiments to nathanpham.me
         - [x] preview  
         - [x] dependencies  
 - [x] 404 page
-- [ ] home page (with all experiments)  
-- [ ] dashboard  
-    - [ ] display experiments  
+- [x] home page (with all experiments)  
+- [x] dashboard  
+    - [x] display experiments  
     - [ ] create & delete experiments  
     - [ ] upload assets  
     - [ ] upload experiments  
 - [ ] settings  
     - [ ] delete experiment  
     - [ ] fork experiment  
-- [ ] authentication (github)  
+- [x] authentication (github)  
 - [ ] pwa  
-- [ ] deploy to vercel  
+- [x] deploy to vercel  
 - [ ] npm package to convert or publish experiment
