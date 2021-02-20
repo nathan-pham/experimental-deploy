@@ -16,18 +16,22 @@
     text-align: left;
 }
 
-.editor-header .meta-container h1 {
+.meta-container input {
+    outline: none;
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    text-overflow: ellipsis;
+}
+
+.meta-container .header input {
     font-size: 1.25rem;
     font-weight: 500;
     color: #3485e4;
-    margin: 0;
 }
 
-.editor-header .meta-container h1 span {
-    outline: none;
-}
-
-.editor-header .meta-container h1 i {
+.meta-container .header i {
     font-size: 0.9rem;
     margin: 0 0 0 0.75rem;
     color: var(--secondary);
@@ -35,17 +39,15 @@
                 transform 0.2s ease;
 }
 
-.editor-header .meta-container h1 i:hover {
+.meta-container .header i:hover {
     filter: brightness(0.9);
     transform: rotate(10deg);
     
 }
 
-.editor-header .meta-container p {
-    font-size: 0.8rem;
+.meta-container .description {
+    font-size: 1rem;
     color: #fff;
-    outline: none;
-    margin: 0;
 }
 
 .editor-header .option {
@@ -241,11 +243,3 @@
     left: calc(100% - var(--size));
     background-color: var(--primary);
 }
-/* 
-
-<div className="toggle-switch">
-            <input type="checkbox" class="switch-checkbox" name="toggle-switch" checked={check} />
-            <label class="toggle-switch-label" for="toggle-switch">
-                {label}
-            </label>
-        </div>*/

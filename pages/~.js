@@ -1,40 +1,42 @@
 import Cookie from "cookies"
 import { useState } from "react"
-import Project from "../assets/components/cards/project"
+import { useRouter } from "next/router"
+import generate from "project-name-generator"
 import Root from "../assets/components/document/root"
+import Project from "../assets/components/cards/project"
 import { collections } from "../assets/database/client"
+import query from "../assets/database/query"
 import { includes } from "../assets/utils"
 import validate from "../assets/validate"
 
 const Dashboard = ({ fetchedProjects }) => {
+    const router = useRouter()
+
     const [ input, setInput ] = useState("")
     const [ projects, setProjects ] = useState(fetchedProjects)
 
-    const updateSettings = (toFind, settings) => {
-        const found = projects.find(({ id }) => id == toFind)
-        const filtered = projects.filter(p => p !== found)
+    const createProject = async () => {
+        const { success } = await query("project", {
+            type: "create",
+            name: generate({ words: 3, alliterative: true }).dashed
+        })
 
-        if(found) {
-            found.data.settings = Object.assign({}, found.data.settings, settings)
-
-            setProjects([
-                ...filtered,
-                found
-            ])
+        if(success) {
+            router.push(`/editor/${success.id}`)
         }
     }
 
-    const filtered = projects
-        .sort((a, b) => {
-            if(a.data.settings.pinned < b.data.settings.pinned) {
-                return -1
-            }
-            else if(a.data.settings.pinned > b.data.settings.pinned) {
-                return 1
-            }
-            return 0
-        })
-        .filter(({ data: { meta } }) => includes(input, meta.name) || includes(input, meta.description))
+    const updateSettings = (toFind, settings) => {
+        const i = projects.findIndex(({ id }) => id == toFind)
+        if(i > -1) {
+            setProjects((state) => {
+                state[i].data.settings = Object.assign({}, state[i].data.settings, settings)
+                return state
+            })
+        }
+    }
+
+    const filtered = projects.filter(({ data: { meta } }) => includes(input, meta.name) || includes(input, meta.description))
 
     return (
         <Root>
@@ -42,7 +44,7 @@ const Dashboard = ({ fetchedProjects }) => {
                 <div className="search-box">
                     <div className="flex align-center justify-between">
                         <h1>dashboard</h1>
-                        <button className="primary-button">
+                        <button className="primary-button" onClick={createProject}>
                             <i className="fas fa-plus"></i>
                         </button>
                     </div>
@@ -50,7 +52,7 @@ const Dashboard = ({ fetchedProjects }) => {
                 </div>
                 {
                     filtered.map((project, i) => (
-                        <Project project={project} key={`project-${i}`} updateSettings={updateSettings} />
+                        <Project project={project} key={`project-${Math.random()}`} updateSettings={updateSettings} />
                     ))
                 }
                 {
@@ -59,6 +61,7 @@ const Dashboard = ({ fetchedProjects }) => {
                         : <></>
                 }
             </main>
+            <footer className="copyright">nathan pham</footer>
         </Root>
     )
 }

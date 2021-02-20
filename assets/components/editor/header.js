@@ -1,16 +1,16 @@
-import Link from "next/link"
-import { useState } from "react"
 import arrayMove from "array-move"
+import { useState } from "react"
+import { useRouter } from "next/router"
+import Link from "next/link"
 import Modal from "../modal"
-import useTimer from "./timer"
 import ToggleSwitch from "../toggle"
 import query from "../../database/query"
+import useTimer from "./timer"
 import { useSettings } from "../settings"
 import { SortableItem, SortableContainer } from "../dependency"
 
-const Header = ({ id, name, description }) => {
-    const [_name, setName] = useTimer(id, "name")
-    const [_description, setDescription] = useTimer(id, "description")
+const Header = ({ id, meta, saveMeta }) => {
+    const router = useRouter()
     const [visible, setVisible] = useState(false)
     const [settings, setSettings] = useSettings()
     
@@ -60,19 +60,37 @@ const Header = ({ id, name, description }) => {
         update("dependencies", dependencies)
     }
 
+    const createProject = async () => {
+        const { success } = await query("project", {
+            type: "create",
+            name,
+            project: id
+        })
+
+        if(success) {
+            window.location = `/editor/${success.id}`
+        }
+    }
+
     return (
         <>
             <header className="editor-header flex justify-between align-center">
                 <div className="flex align-center">
-                    <Link href="/">
+                    <Link href="/~">
                         <img className="header-icon" src="/icons/apple-icon.png" alt="logo" />
                     </Link>
                     <div className="meta-container">
-                        <h1 className="flex align-center">
-                            <span contentEditable={true} suppressContentEditableWarning={true} onKeyPress={setName}>{name}</span>
+                        <div className="flex align-center header">
+                            <input onInput={(e) => {
+                                const name = e.target.value
+                                saveMeta(name, "name")
+                            }} value={meta.name} />
                             <i className="fas fa-pencil-alt"></i>
-                        </h1>
-                        <p contentEditable={true} suppressContentEditableWarning={true} onKeyPress={setDescription}>{description}</p>
+                        </div>
+                        <input onInput={(e) => {
+                            const description = e.target.value
+                            saveMeta(description, "description")
+                        }} className="description" value={meta.description} />
                     </div>
                 </div>
                 <aside>
@@ -88,7 +106,7 @@ const Header = ({ id, name, description }) => {
                         <a href={`/${id}`} target="__blank" rel="noreferrer">
                             <button className="primary-button"><i className="fas fa-link"></i>Open preview</button>
                         </a>
-                        <button className="secondary-button"><i className="fas fa-code-branch"></i>Fork</button>
+                        <button className="secondary-button" onClick={createProject}><i className="fas fa-code-branch"></i>Fork</button>
                     </div>
                     <input className="default" placeholder="Enter a dependency" type="text" style={{margin: "0 0 1rem 0"}} onKeyDown={addDependency}></input>
                     <SortableContainer onSortEnd={onSortEnd} useDragHandle>
@@ -117,7 +135,13 @@ const Header = ({ id, name, description }) => {
                             update("private", checked)
                         }} initial={settings.private} />
                     </div>
-                    <button className="danger-button" style={{margin: "1rem 0 0 0"}}><i className="fas fa-trash-alt"></i> Delete project</button>
+                    <button className="danger-button" style={{margin: "1rem 0 0 0"}} onClick={async () => {
+                        await query("project", {
+                            type: "delete",
+                            name: id
+                        })
+                        router.push("/~")
+                    }}><i className="fas fa-trash-alt"></i> Delete project</button>
                 </Modal>
             ) : null }
         </>

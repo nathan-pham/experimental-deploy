@@ -20,7 +20,7 @@ const Project = ({ project, updateSettings }) => {
     return (
         <article className="dashboard-project flex justify-between align-center">
             <div className="flex align-center">
-                <div className="star-wrapper" onClick={() => {
+                <div className="star-wrapper" onClick={(e) => {
                     update("pinned", !pinned)
                     updateSettings(id, {
                         pinned: !pinned
@@ -37,7 +37,9 @@ const Project = ({ project, updateSettings }) => {
                     })
                     update("private", checked)
                 }} initial={data.settings.private} />
-                <span>{ data.meta.name }</span>
+                <Link href={`/editor/${id}`}>
+                    <span>{ data.meta.name }</span>
+                </Link>
             </div>
         </article>
     )

@@ -69,3 +69,10 @@
 .no-experiments {
     color: #fff;
 }
+
+footer.copyright {
+    text-align: center;
+    padding: 2rem;
+    color: #fff;
+    font-size: 1.1rem;
+}

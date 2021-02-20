@@ -1,6 +1,6 @@
 import { collections } from "./"
 
-const generateDefault = (name) => {
+const defaultProject = (name) => {
     return ({
         time: Date.now(),
         meta: {
@@ -30,14 +30,24 @@ const fetchProject = async (id) => {
         : { error: "project does not exist" }
 }
 
-const createProject = async (name="untitled-project", project={}) => {
-    const _default = Object.assign({}, generateDefault(name), project)
-    const res = await collections.projects.add(_default)
+const createProject = async (name="untitled-project", id) => {
+    let project = {}
+
+    if(id) {
+        const document = await collections.projects.doc(id).get()
+
+        if(document.exists) {
+            project = document.data()
+            project.meta.name += "-fork"
+        }
+    }
+
+    const data = Object.assign({}, defaultProject, project)
+    const res = await collections.projects.add(data)
 
     return ({
         success: {
-            data: _default,
-            id: res.id    
+            id: res.id
         }
     })
 }
@@ -49,9 +59,14 @@ const updateProject = async (id, project) => {
     })
 }
 
+const deleteProject = async (id) => {
+    return collections.projects.doc(id).delete()
+}
+
 export {
     fetchAll,
     fetchProject,
     updateProject,
-    createProject
+    createProject,
+    deleteProject
 }

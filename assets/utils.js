@@ -42,7 +42,7 @@ const encodeParams = (params) => (
 )
 
 const includes = (input, data) => {
-    const words = input.split(' ')
+    const words = input.trim().split(' ')
     for(const word of words) {
         if(data.includes(word)) {
             return true

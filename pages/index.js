@@ -18,7 +18,7 @@ const Index = ({ projects }) => {
                         <h1>experiments</h1>
                         <Link href="/api/auth/login">
                             <button className="primary-button">
-                                login
+                                <i className="fas fa-plus"></i>
                             </button>
                         </Link>
                     </div>
@@ -36,6 +36,7 @@ const Index = ({ projects }) => {
                         : <></>
                 }
             </main>
+            <footer className="copyright">nathan pham</footer>
         </Root>
     )
 }

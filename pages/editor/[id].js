@@ -10,6 +10,7 @@ import Preview from "../../assets/components/preview"
 import Error from "../../assets/components/error"
 import query from "../../assets/database/query"
 import validate from "../../assets/validate"
+
 const half = 50
 const third = 100 / 3
 
@@ -31,12 +32,23 @@ const ProjectEditor = ({ id, fetchedProject }) => {
       if(save) {
         const [type, code] = save
 
-        timeout = setTimeout(async () => {
+        if(type.includes('.')) {
+            setProject((state) => ({
+                ...state,
+                meta: {
+                    ...state.meta,
+                    [type.split('.').pop()]: code
+                }
+            }))
+        }
+        else {
             setProject((state) => ({
                 ...state,
                 [type]: code
             }))
+        }
 
+        timeout = setTimeout(async () => {
             query("project", {
                 name: id,
                 project: {
@@ -50,7 +62,11 @@ const ProjectEditor = ({ id, fetchedProject }) => {
       }
 
       return () => clearTimeout(timeout)
-    }, [save, project])
+    }, [save])
+
+    const saveMeta = (meta, type) => {
+        setSave([`meta.${type}`, meta])
+    }
 
     return (
         <Root>
@@ -59,7 +75,7 @@ const ProjectEditor = ({ id, fetchedProject }) => {
                     ? <Error />
                     : (
                         <SettingsProvider settings={project.settings}>
-                            <Header id={id} name={project.meta.name} description={project.meta.description} />
+                            <Header id={id} meta={project.meta}  saveMeta={saveMeta} />
                             <Split sizes={[half, half]} direction="vertical" className="editor fade-in flex direction-column" gutterSize={8} elementStyle={flexBasis}>
                                 <Split sizes={[ third, third, third ]} direction="horizontal" className="flex direction-row half" gutterSize={8}>
                                     <div className="container code">
