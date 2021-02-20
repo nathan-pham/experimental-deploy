@@ -17,9 +17,9 @@ Deploy experiments to nathanpham.me
     - [ ] create & delete experiments  
     - [ ] upload assets  
     - [ ] upload experiments  
-- [ ] settings  
-    - [ ] delete experiment  
-    - [ ] fork experiment  
+- [x] settings  
+    - [x] delete experiment  
+    - [x] fork experiment  
 - [x] authentication (github)  
 - [ ] pwa  
 - [x] deploy to vercel  
