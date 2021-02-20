@@ -25,7 +25,7 @@ const Index = ({ projects }) => {
                 <div className="search-box">
                     <div className="flex align-center justify-between">
                         <h1>experiments</h1>
-                        <Link href="/login">
+                        <Link href="/api/auth/login">
                             <button className="primary-button">
                                 <i className="fas fa-plus"></i>
                             </button>
@@ -36,7 +36,7 @@ const Index = ({ projects }) => {
                 </div>
                 {
                     filtered.map((project, i) => (
-                        <Experiment project={project} key={i} />
+                        <Experiment project={project} key={`experiment-${i}`} />
                     ))
                 }
                 {
