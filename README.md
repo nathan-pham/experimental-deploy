@@ -1,6 +1,11 @@
 # experiments
 Deploy experiments to nathanpham.me
 
+## screenshots
+![home](/screenshots/home.png)
+![dashboard](/screenshots/dashboard.png)
+![editor](/screenshots/editor.png)
+
 ## todo
 - [x] icons & seo  
 - [x] main editor  
@@ -14,7 +19,7 @@ Deploy experiments to nathanpham.me
 - [x] home page (with all experiments)  
 - [x] dashboard  
     - [x] display experiments  
-    - [ ] create & delete experiments  
+    - [x] create & delete experiments  
     - [ ] upload assets  
     - [ ] upload experiments  
 - [x] settings  
