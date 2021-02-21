@@ -8,7 +8,7 @@ const { JSDOM } = jsdom
 
 const convert = (url, invert) => {
     return invert
-        ? atob(url).split("0").filter(v => v.length).join('')
+        ? atob(url).split('0').filter(v => v.length).join('')
         : btoa(url.padStart(15, '0'))
 }
 
@@ -48,10 +48,20 @@ const getServerSideProps = async ({ params }) => {
         if(res.status == 200) {
             const body = await res.text()
             const replDocument = new JSDOM(body).window.document
-            project = {
-                repl,
-                name: replDocument.querySelector("title").textContent,
-                description: replDocument.querySelector("meta[name='description']").getAttribute("content"),
+
+            try {
+                project = {
+                    repl,
+                    name: replDocument.querySelector("title").textContent,
+                    description: replDocument.querySelector("meta[name='description']").getAttribute("content"),
+                }
+            }
+            catch(e) {
+                project = {
+                    repl,
+                    name: "repl experiment",
+                    description: "no description"
+                }
             }
         }
         else {
