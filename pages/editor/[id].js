@@ -41,14 +41,15 @@ const ProjectEditor = ({ id, fetchedProject }) => {
                 }
             }))
         }
-        else {
-            setProject((state) => ({
-                ...state,
-                [type]: code
-            }))
-        }
 
         timeout = setTimeout(async () => {
+            if(!type.includes('.')) {
+                setProject((state) => ({
+                    ...state,
+                    [type]: code
+                }))
+            }
+
             query("project", {
                 name: id,
                 project: {
