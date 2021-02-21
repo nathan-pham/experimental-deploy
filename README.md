@@ -5,6 +5,7 @@ Deploy experiments to nathanpham.me
 ![landing](/screenshots/landing.png)
 ![dashboard](/screenshots/dashboard.png)
 ![editor](/screenshots/editor.png)
+![settings](/screenshots/settings.png)
 
 ## todo
 - [x] icons & seo  
