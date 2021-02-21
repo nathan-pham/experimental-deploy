@@ -16,7 +16,7 @@ const ProjectEditor = ({ id, fetchedProject }) => {
     return (
         fetchedProject.error
             ? (
-                <Root meta={{ name: "Project not found" }}>
+                <Root meta={{ name: "project not found" }}>
                     <Error />
                 </Root>
             )
@@ -52,15 +52,19 @@ const getServerSideProps = async ({ params }) => {
             try {
                 project = {
                     repl,
-                    name: replDocument.querySelector("title").textContent,
-                    description: replDocument.querySelector("meta[name='description']").getAttribute("content"),
+                    meta: {
+                        name: replDocument.querySelector("title").textContent,
+                        description: replDocument.querySelector("meta[name='description']").getAttribute("content")
+                    }
                 }
             }
             catch(e) {
                 project = {
                     repl,
-                    name: "repl experiment",
-                    description: "no description"
+                    meta: {
+                        name: "repl experiment",
+                        description: "no description"
+                    }
                 }
             }
         }
