@@ -2,7 +2,7 @@
 Deploy experiments to nathanpham.me
 
 ## screenshots
-![home](/screenshots/home.png)
+![landing](/screenshots/landing.png)
 ![dashboard](/screenshots/dashboard.png)
 ![editor](/screenshots/editor.png)
 
