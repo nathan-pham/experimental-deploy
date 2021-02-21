@@ -12,7 +12,7 @@ const handle = async (req, res) => {
             res.json(await deleteProject(name))
             break
         case "create":
-            res.json(await createProject(name, project))
+            res.json(await createProject(name, project || null))
             break
         case "fetch":
             res.json(await fetchProject(name))

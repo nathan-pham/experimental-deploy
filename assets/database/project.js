@@ -42,8 +42,7 @@ const createProject = async (name="untitled-project", id) => {
         }
     }
 
-    const data = Object.assign({}, defaultProject, project)
-    const res = await collections.projects.add(data)
+    const res = await collections.projects.add(Object.assign({}, defaultProject(name), project))
 
     return ({
         success: {
