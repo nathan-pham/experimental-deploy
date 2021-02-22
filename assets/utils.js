@@ -23,7 +23,7 @@ const generateCode = (project) => {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             ${ generateDependencies(project.settings.dependencies) }
             <style>${project.css}</style>
-            <script type="module">${project.js}</script>
+            <script ${ project.js.trim().startsWith("import") ? 'type="module"' : '' }>${project.js}</script>
         </head>
         <body>
             ${project.html}
