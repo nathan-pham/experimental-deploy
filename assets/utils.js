@@ -21,12 +21,12 @@ const generateCode = (project) => {
         <head lang="en">
             <meta charset="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
-            ${ generateDependencies(project.settings.dependencies) }
-            <style>${project.css}</style>
-            <script ${ project.js.trim().startsWith("import") ? 'type="module"' : '' }>${project.js}</script>
         </head>
         <body>
             ${project.html}
+            ${ generateDependencies(project.settings.dependencies) }
+            <style>${project.css}</style>
+            <script ${ project.js.trim().startsWith("import") ? 'type="module"' : '' }>${project.js}</script>
         </body>
     `)
 }
